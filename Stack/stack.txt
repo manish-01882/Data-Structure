@@ -1,0 +1,52 @@
+#include<iostream>
+using namespace std;
+
+class Stack{
+    int Max_Stack;
+    int arr[20];
+    int top;
+    public:
+    Stack(){
+        Max_Stack = 20;
+        top = -1;
+    }
+    void Push( char ele);
+    int Pop();
+    void CheckPalindrome(char ele[5]);
+};
+
+void Stack::Push(char ele){
+    if(top == Max_Stack){
+        cout<<"Stack is full";
+    }else{
+        top = top+1;
+        arr[top]= ele;
+    }
+    cout<<arr[top]<<" ";
+}
+
+int Stack::Pop(){
+    if(top == -1){
+        cout<<"Stack is empty";
+    }else{
+        int ele= arr[0];
+        top = top-1;
+        return ele;
+    }
+}
+
+void Stack::CheckPalindrome(char ele[5]){
+    for(int i=0; i<5/2;i++){
+        Push(ele[i]);
+    }
+}
+
+  
+
+int main(){
+    Stack obj;
+    // obj.Push(1);
+    // int result = obj.Pop();
+    // cout<<result;
+    obj.CheckPalindrome("12321");
+}
