@@ -77,25 +77,15 @@ void double_linked_list::insertAtEnd(int SSN,const char* name,const char* dept, 
     p->salary = salary;
     strcpy(p->phone_no, phone_no);
     
-    if(head != NULL){
+    if(temp == NULL)
+        head = p;
+    else{
         while(temp->next != NULL){
             temp = temp->next;
         } 
-        p->prev = temp;
         temp->next = p;
-
-        temp = temp->next;
-        while(temp->prev != NULL){
-            temp2->next = temp-> prev;
-            temp2->prev = temp->next;
-            temp = temp->prev;
-        }
-        tail = temp2;
-    } else {
-        head = p;
     }
 
-    
     
 
     // if(tail != NULL){
@@ -135,8 +125,15 @@ void double_linked_list::display(){
 
 int main(){
     double_linked_list n;
-    n.insertAtBeg(255,"manish","cse", "student", 10, "7814086432");
-    n.insertAtEnd(500,"jaspreet", "CSE", "std", 500, "22424");
-    n.deleteFromBeg();
+    cout<<"Name: Karanbir Singh\nURN: 2203483\n";
+    // cout<<"Insert at Beginning\n";
+    // cout<<"Insert at end\n";
+    cout<<"delete from end\n";
+    
+    // cout<<"255 \nManish \nCSE\nstudent\n10\n7814086\n";
+    // cout<<"\n500\njaspreet\nCSE\nstudent\n500\n22424\n";
+    // n.insertAtBeg(255,"manish","cse", "student", 10000, "7814086");
+    // n.insertAtEnd(500,"jaspreet", "CSE", "student", 500, "22424");
+    // n.deleteFromBeg();
     n.display();
 }

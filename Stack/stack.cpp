@@ -5,7 +5,7 @@ using namespace std;
 
 class stack{
     int max_stack;
-    int arr[20];
+    char arr[20];
     int top;
     public:
     stack(){
@@ -14,7 +14,7 @@ class stack{
     }
     void push(char ele);
     int pop();
-    //void isPalindrome(char str[]);
+    // void isPalindrome(char str[]);
     void display();
 };
 
@@ -37,6 +37,15 @@ int stack::pop(){
     }
     return -1;
 }
+void stack::display(){
+    int i=0;
+    while(i<=top){
+        char m = pop();
+        cout<<m;
+    }
+    cout << endl;
+}
+
 void isPalindrome(char str[]){
     stack s;
     int i = 0;
@@ -45,7 +54,7 @@ void isPalindrome(char str[]){
         i++;
     }
     int j=0, h=0;
-    while(j>i){
+    while(j<i){
         if(s.pop() == str[j]){
             h++;
             j++;
@@ -64,16 +73,11 @@ void isPalindrome(char str[]){
 
 }
 
-void stack::display(){
-    int i=0;
-    while(i<top){
-        pop();
-        cout<<arr[top];
-    }
-}
-
 int main(){
     stack s;
+
+    cout<<"Name: Karan Kashyap"<<endl;
+    cout<<"URN: 2203481"<<endl;
     cout<<"1. Push an element"<<endl;
     cout<<"2. Pop an element"<<endl;
     cout<<"3. Check palindrome"<<endl;
@@ -95,7 +99,7 @@ int main(){
             }
             case 2:{
                 char t = s.pop();
-                cout<<"Pop element: "<<t;
+                cout<<"Pop element: "<<t<<endl;
                 break;
             }
             case 3:{

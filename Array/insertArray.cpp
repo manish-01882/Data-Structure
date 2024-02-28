@@ -131,12 +131,20 @@ void arrProg::display(){
 }
 int main(){
     arrProg a;
+    cout<<"Karanbir Singh\nURN: 2203483\n";
+    // cout<<"Insert At end: 10\n";
+    // cout<<"Insert At end: 5\n";
+    // cout<<"Insert 23 at location 5\n";
+    // cout<<"Insert 10 after 3\n";
+    // cout<<"\nDelete from end\n";
+    // cout << "Delete from beginning\n";
+    cout<<"\ndelete at location 4\n";
 
     a.insertAtBeg(3);
     a.insertAtBeg(25);
     a.insertAtEnd(10);
     a.insertAtEnd(5);
-    a.insertAtEnd(14);
+    // a.insertAtEnd(14);
     a.insertAtLoc(23,5);                //Inserting element 23 after position 4
     a.insertAfter(10,3);                //Inserting 11 after element 3
     a.deleteFromBeg();

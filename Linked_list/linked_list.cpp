@@ -102,17 +102,17 @@ void LinkedList::display(){
 
 int main(){
     LinkedList L;
-    cout<<"Name: Jaspreet Singh\nURN: 2203473\n";
+    cout<<"Name: Manish\nURN: 2203495\n";
 
-    // cout<<"Insert At beginning\nJaspreet \nCSE \n4 \n7911531335\n";
+    // cout<<"Insert At beginning\nKaran \nCSE \n4 \n51351488\n";
     // cout<<"Insert at end \nKashyap \nCSE \n4 \n9163183155";
-    // cout<<"Delete from end\n";
+    // cout<<"\nDelete from end\n";
     cout << "Delete from beginning";
 
     // L.insertAtBeg(2203479, "Jaspreet","CSE",4,"7911531335");
     // L.insertAtBeg(2203495, "Manish", "CSE", 4, "7814086432" );
-    // L.insertAtBeg(220383, "Karan", "CSE", 4, "51351488");
-    L.insertAtEnd(2203490, "Komal", "CSE", 4, "7648613514");
+    L.insertAtBeg(220383, "Karan", "CSE", 4, "51351488");
+    // L.insertAtEnd(2203490, "Komal", "CSE", 4, "7648613514");
     L.insertAtEnd(2215084, "Kashyap", "CSE", 4 ,"9163183155");
     L.deleteFromEnd();
     L.deleteFromBeg();
