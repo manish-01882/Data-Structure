@@ -19,9 +19,9 @@ public:
     }
     
     void Insert(int value) {
-        tree *n = new tree(value);
+        tree *temp = new tree(value);
         if (root == NULL) {
-            root = n;
+            root = temp;
             return;
         }
         tree *current = root;
@@ -37,9 +37,9 @@ public:
         }
         
         if (value < parent->data) {
-            parent->left = n;
+            parent->left = temp;
         } else {
-            parent->right = n;
+            parent->right = temp;
         }
     }
    void display() {
