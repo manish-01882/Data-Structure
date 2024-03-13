@@ -125,13 +125,14 @@ void double_linked_list::display(){
 
 int main(){
     double_linked_list n;
-    cout<<"Name: Karanbir Singh\nURN: 2203483\n";
+    cout<<"Name: Jaspreet Singh\nURN: 2203473\n";
     // cout<<"Insert at Beginning\n";
     // cout<<"Insert at end\n";
+    // cout<<"delete from beginning\n\n";
     cout<<"delete from end\n";
     
     // cout<<"255 \nManish \nCSE\nstudent\n10\n7814086\n";
-    // cout<<"\n500\njaspreet\nCSE\nstudent\n500\n22424\n";
+    // cout<<"\n500\njaspreet\nCSE\nstudent\n500\n22424\n\n";
     // n.insertAtBeg(255,"manish","cse", "student", 10000, "7814086");
     // n.insertAtEnd(500,"jaspreet", "CSE", "student", 500, "22424");
     // n.deleteFromBeg();
