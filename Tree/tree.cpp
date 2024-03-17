@@ -94,7 +94,7 @@ int main() {
     BinarySearchTree n;
     n.Insert(22);
     n.Insert(15);
-    n.Insert(7);
+    n.Insert(48);
     n.Insert(2);
     n.display();
     n.search(7);
