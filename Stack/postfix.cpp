@@ -1,4 +1,3 @@
-//Exp 5
 #include<iostream>
 #include<cstring>
 using namespace std;
@@ -29,7 +28,14 @@ public:
         top--;
         return w;
     }
+    char getTop() const {
+        return b[top];
+    }
+    bool isEmpty() const {
+        return (top == -1);
+    }
 };
+
 
 void infixToPostfix(string m){
     stack s;
@@ -42,48 +48,39 @@ void infixToPostfix(string m){
         if((e>='a'&& e<='z') ||( e>='A' && e<='Z')){
             p[c]=e;
             c++;
-
         }
         else if(e=='(' || e=='{' || e=='['){
             s.push(e);
-            
         }
         else if(e=='^' || e=='%' || e=='*' || e=='/' || e=='+' || e=='-'){
-            int p1 = checkPrecedence(e);
-            int greaterPrecedence = 1;
-                char op = s.pop();
-                int p2 = checkPrecedence(op);
-                if(p2>=p1){ 
-                    p[c]= op;
-                    c++;
-                }
-                else{
-                    s.push(op);
-                } 
+            while(checkPrecedence(s.getTop()) >= checkPrecedence(e)) {
+                p[c] = s.pop();
+                c++;
+            }
             s.push(e);
-            
         }
         else if(e==')' || e=='}' || e==']'){
-    while(1){
-        char n = s.pop();
-        if(n == '(' || n == '{' || n == '['){
-            break;
-        }
-
-        else{
-            p[c] = n;
-            c++;
+            while(1){
+                char n = s.pop();
+                if(n == '(' || n == '{' || n == '['){
+                    break;
+                }
+                else{
+                    p[c] = n;
+                    c++;
+                }
+            }
         }
     }
-    }}
-    
+    p[c] = '\0'; // Null terminate the string
     cout<< "Postfix Expression: " << p << endl;
 }
+
 
 int checkPrecedence(char op){
     if(op =='^'){
         return 5;
-}
+    }
     else{
         if(op == '/' || op == '%'){
             return 4;
@@ -99,63 +96,62 @@ int checkPrecedence(char op){
 }
 
 void checkbracket(string m){
-	stack s;
-	int c=0;
-	for(int i=0;i<m.length();i++){
-		char e=m[i];
-		if(e=='(' || e=='{' || e=='['){
-			s.push(e);
-		}
-		if(e==')' || e=='}' || e==']'){
-			char op= s.pop();
-			int ch = bracket(e);
-			if(e==')' && ch == 1)
-			    c++;
-			else if(e=='}' && ch == 2){
-				c++;
-			}
-			else if(e==']' && ch == 3){
-				c++;
-			}
-			else{
-			    cout<<"unmatched\n";
-			    return;
-			}
-		}
-	}
-	if(s.top==-1){
-		infixToPostfix(m);
-	}
-	else{
-		cout<<"unmatched\n";
-	}
+    stack s;
+    int c=0;
+    for(int i=0;i<m.length();i++){
+        char e=m[i];
+        if(e=='(' || e=='{' || e=='['){
+            s.push(e);
+        }
+        if(e==')' || e=='}' || e==']'){
+            char op= s.pop();
+            int ch = bracket(e);
+            if(e==')' && ch == 1)
+                c++;
+            else if(e=='}' && ch == 2){
+                c++;
+            }
+            else if(e==']' && ch == 3){
+                c++;
+            }
+            else{
+                cout<<"unmatched\n";
+                return;
+            }
+        }
+    }
+    if(s.top==-1){
+        infixToPostfix(m);
+    }
+    else{
+        cout<<"unmatched\n";
+    }
 }
 
 int bracket(char m){
-	if(m==')')
-		return 1;
-	else if(m=='}')
-	    return 2;
-	else if(m==']')
-	    return 3;
-	else 
-	    return -1;
+    if(m==')')
+        return 1;
+    else if(m=='}')
+        return 2;
+    else if(m==']')
+        return 3;
+    else 
+        return -1;
 }
 
 int main(){
-    string s;//="{(a+b)/g}*f";
-    //s=s+')';
-    //infixToPostfix(s);
-    //checkbracket(s);
-    cout<<"Name : Manish Choudhary\nURN : 2203497\n\n";
+    string s;
+    // cout<<"Name : Manish Choudhary\nURN : 2203495\n\n";
+    // cout<<"Name: Karamveer Kaur\nURN: 2203479\n\n";
+    // cout<<"Name: Jaspreet Singh\nURN: 2203473\n\n";
+    cout<<"Name: Karan Kashyap\nURN: 2203481\n\n";
     string y="y";
     while(y=="yes" || y=="y"){
-    	cout<<"Enter an Expression : ";
+        cout<<"Enter an Expression : ";
         cin>>s;
         checkbracket(s);
-    	//string y;
-    	cout<<"do you want to check the expression?\n ";
-    	cin>>y;
-	}
+        cout<<"do you want to check the expression?\n ";
+        cin>>y;
+    }
     return 0;
 }

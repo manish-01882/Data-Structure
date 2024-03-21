@@ -125,6 +125,10 @@ cout<<a<<"x + "<<b<<"y + "<<c<<"z"<<endl;
 }
 
 int main(){
+    // cout<<"Name : Manish Choudhary\nURN : 2203495\n\n";
+    // cout<<"Name: Karamveer Kaur\nURN: 2203479\n\n";
+    // cout<<"Name: Jaspreet Singh\nURN: 2203473\n\n";
+    // cout<<"Name: Karan Kashyap\nURN: 2203481\n\n";
     LinkedList L1, L2, L3;
     L1.get_data();
     L2.get_data();

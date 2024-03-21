@@ -92,11 +92,15 @@ public:
 
 int main() {
     BinarySearchTree n;
+    // cout<<"Name : Manish Choudhary\nURN : 2203495\n\n";
+    cout<<"Name: Karamveer Kaur\nURN: 2203479\n\n";
+    // cout<<"Name: Jaspreet Singh\nURN: 2203473\n\n";
+    // cout<<"Name: Karan Kashyap\nURN: 2203481\n\n";
     n.Insert(22);
     n.Insert(15);
     n.Insert(48);
     n.Insert(2);
     n.display();
-    n.search(7);
+    // n.search(7);
     return 0;
 }
