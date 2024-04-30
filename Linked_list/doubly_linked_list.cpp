@@ -56,19 +56,18 @@ void double_linked_list::insertAtBeg(int SSN,const char* name,const char* dept, 
 
     p->prev = NULL;
     p-> next = head;
+
+    if(head != NULL)
+        head->prev = p;
     head = p;
 
     if(tail == NULL){
         tail = p;
-        tail->prev = head->next;
-        tail->next = head->prev;
     }
 }
 
 void double_linked_list::insertAtEnd(int SSN,const char* name,const char* dept, const char* designation, float salary, const char* phone_no){
     struct node *p = new node;
-    struct node *temp,*temp2;
-    temp = head;
 
     p->SSN = SSN;
     strcpy(p->name, name);
@@ -77,14 +76,16 @@ void double_linked_list::insertAtEnd(int SSN,const char* name,const char* dept, 
     p->salary = salary;
     strcpy(p->phone_no, phone_no);
     
-    if(temp == NULL)
+    p->next = NULL;
+    p->prev = tail;
+
+    if(tail != NULL)
+        tail->next = p;
+    tail = p;
+
+    if(head == NULL)
         head = p;
-    else{
-        while(temp->next != NULL){
-            temp = temp->next;
-        } 
-        temp->next = p;
-    }
+    
 
     
 
@@ -99,11 +100,35 @@ void double_linked_list::insertAtEnd(int SSN,const char* name,const char* dept, 
 }
 
 void double_linked_list::deleteFromBeg(){
-    struct node *temp;
-    temp = head;
-    temp = temp->next;
-    temp->prev = NULL;
-    head = temp;
+       if(head == NULL)
+        return;
+
+    struct node *temp = head;
+    head = head->next;
+
+    if(head != NULL)
+        head->prev = NULL;
+    else
+        tail = NULL;
+
+    delete temp;
+}
+
+void double_linked_list::deleteFromEnd(){
+    if(tail == NULL)
+        return;
+
+    struct node* temp = tail;
+
+    if(head == tail){
+        head = tail = NULL;
+    }
+    else{
+        tail = tail->prev;
+        tail = tail->next = NULL;
+    }
+
+    delete temp;
 }
 
 void double_linked_list::display(){
@@ -125,16 +150,16 @@ void double_linked_list::display(){
 
 int main(){
     double_linked_list n;
-    cout<<"Name: Jaspreet Singh\nURN: 2203473\n";
+    // cout<<"Name: Jaspreet Singh\nURN: 2203473\n";
     // cout<<"Insert at Beginning\n";
     // cout<<"Insert at end\n";
     // cout<<"delete from beginning\n\n";
-    cout<<"delete from end\n";
+    // cout<<"delete from end\n";
     
     // cout<<"255 \nManish \nCSE\nstudent\n10\n7814086\n";
     // cout<<"\n500\njaspreet\nCSE\nstudent\n500\n22424\n\n";
-    // n.insertAtBeg(255,"manish","cse", "student", 10000, "7814086");
-    // n.insertAtEnd(500,"jaspreet", "CSE", "student", 500, "22424");
-    // n.deleteFromBeg();
+    n.insertAtBeg(255,"manish","cse", "student", 10000, "7814086");
+    n.insertAtEnd(500,"jaspreet", "CSE", "student", 500, "22424");
+    n.deleteFromBeg();
     n.display();
 }
