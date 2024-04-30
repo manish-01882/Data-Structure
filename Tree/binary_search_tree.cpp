@@ -39,6 +39,8 @@ inline void BinarySearchTree ::optionMenu(struct node *root)
     cin >> choice;
     switch (choice)
     {
+    case 0:
+        exit(0);
     case 1:
         insertElement(&root);
         optionMenu(root);
@@ -165,6 +167,7 @@ inline bool BinarySearchTree ::searchElement(struct node *root, int element)
 int main()
 {
     BinarySearchTree bst;
+    cout<<"Name : Manish Choudhary\nURN : 2203495\n\n";
     bst.initialiseList();
     return 0;
 }

@@ -66,11 +66,12 @@ void evaluate(string a){
 }
 
 int main(){
-    // cout<<"Name : Manish Choudhary\nURN : 2203495\n\n";
+    cout<<"Name : Manish Choudhary\nURN : 2203495\n\n";
     // cout<<"Name: Karamveer Kaur\nURN: 2203479\n\n";
     // cout<<"Name: Jaspreet Singh\nURN: 2203473\n\n";
-    cout<<"Name: Karan Kashyap\nURN: 2203481\n\n";
+    // cout<<"Name: Karan Kashyap\nURN: 2203481\n\n";
     string a="562+*84/-";
+    cout<<"562+*84/-"<<endl;
     evaluate(a);
     return 0;
 }

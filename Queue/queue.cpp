@@ -65,9 +65,9 @@ int main() {
     Queue obj;
     int ch;
 
-    // cout << "Name: Karan Kashyap\nURN: 2203481\n\n";
+    // cout << "Name: Karanbir Singh\nURN: 2203483\n\n";
     // cout<<"Name : Manish Choudhary\nURN : 2203495\n\n";
-    cout<<"Name: Karamveer Kaur\nURN: 2203479\n\n";
+    // cout<<"Name: Karamveer Kaur\nURN: 2203479\n\n";
     // cout<<"Name: Jaspreet Singh\nURN: 2203473\n\n";
     cout << "1. Insert an element.\n2. Delete an element\n3. Display queue\n4. Exit\n";
 
