@@ -20,7 +20,7 @@ f. Exit
 using namespace std;
 
 struct node{
-    struct node* prev;
+
     int SSN;
     char name[20];
     char dept[10];
@@ -111,7 +111,7 @@ void double_linked_list::deleteFromBeg(){
 void double_linked_list::deleteFromEnd(){
 	if(head == NULL)
 		return;
-    struct node* temp,temp2;
+    struct node* temp,*temp2;
     while(temp->next->next != NULL)
 	    temp = temp->next;
     temp2 = temp->next;
@@ -149,6 +149,8 @@ int main(){
     // cout<<"\n500\njaspreet\nCSE\nstudent\n500\n22424\n\n";
     n.insertAtBeg(255,"manish","cse", "student", 10000, "7814086");
     n.insertAtEnd(500,"jaspreet", "CSE", "student", 500, "22424");
+    n.insertAtEnd(344,"Karan","CSE","student",500,"4987008");
     n.deleteFromBeg();
+    n.deleteFromEnd();
     n.display();
 }
