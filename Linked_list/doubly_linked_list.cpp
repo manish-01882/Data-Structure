@@ -28,6 +28,7 @@ struct node{
     float salary;
     char phone_no[11];
     struct node* next;
+    struct node* prev;
 };
 
 class double_linked_list{
@@ -35,7 +36,6 @@ class double_linked_list{
     public:
     double_linked_list(){
         head = NULL;
-        tail = NULL;
     }
 
     void insertAtBeg(int SSN,const char* name,const char* dept, const char* designation, float salary, const char* phone_no);
@@ -61,13 +61,11 @@ void double_linked_list::insertAtBeg(int SSN,const char* name,const char* dept, 
         head->prev = p;
     head = p;
 
-    if(tail == NULL){
-        tail = p;
-    }
 }
 
 void double_linked_list::insertAtEnd(int SSN,const char* name,const char* dept, const char* designation, float salary, const char* phone_no){
     struct node *p = new node;
+    struct node *temp = head;
 
     p->SSN = SSN;
     strcpy(p->name, name);
@@ -77,11 +75,10 @@ void double_linked_list::insertAtEnd(int SSN,const char* name,const char* dept, 
     strcpy(p->phone_no, phone_no);
     
     p->next = NULL;
-    p->prev = tail;
-
-    if(tail != NULL)
-        tail->next = p;
-    tail = p;
+    while(temp->next != NULL)
+	    temp = temp->next;
+    p->prev = temp;
+    temp->next = p;
 
     if(head == NULL)
         head = p;
@@ -104,31 +101,23 @@ void double_linked_list::deleteFromBeg(){
         return;
 
     struct node *temp = head;
-    head = head->next;
 
-    if(head != NULL)
-        head->prev = NULL;
-    else
-        tail = NULL;
+    head = head->next;
+    head->prev = NULL;
 
     delete temp;
 }
 
 void double_linked_list::deleteFromEnd(){
-    if(tail == NULL)
-        return;
+	if(head == NULL)
+		return;
+    struct node* temp,temp2;
+    while(temp->next->next != NULL)
+	    temp = temp->next;
+    temp2 = temp->next;
+    temp->next = NULL;
 
-    struct node* temp = tail;
-
-    if(head == tail){
-        head = tail = NULL;
-    }
-    else{
-        tail = tail->prev;
-        tail = tail->next = NULL;
-    }
-
-    delete temp;
+    delete temp2;
 }
 
 void double_linked_list::display(){
