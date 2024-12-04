@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 int linearsearch(int arr[], int size, int num)
 {

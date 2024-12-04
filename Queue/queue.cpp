@@ -1,97 +1,96 @@
 #include <iostream>
 using namespace std;
 
-class Queue {
-    char a[20];
-    int f, r;
-    int max;
-    int c;
+class CircularQueue {
+    char elements[20]; // Array to store elements
+    int frontIndex, rearIndex; // Index of the front and rear elements
+    int maxSize; // Maximum size of the queue
+    int currentSize; // Current number of elements in the queue
 
 public:
-    Queue() {
-        f = -1;
-        r = -1;
-        max = 20;
-        c = 0;
+    CircularQueue() {
+        frontIndex = -1;
+        rearIndex = -1;
+        maxSize = 20;
+        currentSize = 0;
     }
 
-    void enqueue(char ele) {
-        if ((r + 1) % max == f) {
-            throw overflow_error("Overflow");
+    void enqueue(char element) {
+        if ((rearIndex + 1) % maxSize == frontIndex) {
+            throw overflow_error("Overflow: Queue is full");
         }
 
-        if (f == -1) {
-            f = 0;
-            r = 0;
+        if (frontIndex == -1) {
+            frontIndex = 0;
+            rearIndex = 0;
         } else {
-            r = (r + 1) % max;
+            rearIndex = (rearIndex + 1) % maxSize;
         }
-        a[r] = ele;
-        c++;
+        elements[rearIndex] = element;
+        currentSize++;
     }
 
     char dequeue() {
-        if (f == -1) {
-            throw underflow_error("Underflow");
+        if (frontIndex == -1) {
+            throw underflow_error("Underflow: Queue is empty");
         }
-        char ele = a[f];
-        if (f == r) {
-            f = -1;
-            r = -1;
+        char element = elements[frontIndex];
+        if (frontIndex == rearIndex) {
+            frontIndex = -1;
+            rearIndex = -1;
         } else {
-            f = (f + 1) % max;
+            frontIndex = (frontIndex + 1) % maxSize;
         }
-        c--;
-        return ele;
+        currentSize--;
+        return element;
     }
 
     void display() {
-        if (f == -1) {
+        if (frontIndex == -1) {
             cout << "Queue is empty" << endl;
             return;
         }
 
         cout << "Queue: ";
-        int i = f;
-        while (i != r) {
-            cout << a[i] << " ";
-            i = (i + 1) % max;
+        int index = frontIndex;
+        while (index != rearIndex) {
+            cout << elements[index] << " ";
+            index = (index + 1) % maxSize;
         }
-        cout << a[r] << endl;
+        cout << elements[rearIndex] << endl;
     }
 };
 
 int main() {
-    Queue obj;
-    int ch;
+    CircularQueue queue;
+    int choice;
 
-    // cout << "Name: Karanbir Singh\nURN: 2203483\n\n";
-    // cout<<"Name : Manish Choudhary\nURN : 2203495\n\n";
-    // cout<<"Name: Karamveer Kaur\nURN: 2203479\n\n";
-    // cout<<"Name: Jaspreet Singh\nURN: 2203473\n\n";
-    cout << "1. Insert an element.\n2. Delete an element\n3. Display queue\n4. Exit\n";
+    cout << "1. Insert an element\n";
+    cout << "2. Delete an element\n";
+    cout << "3. Display queue\n";
+    cout << "4. Exit\n";
 
     while (true) {
         cout << "\nEnter your choice: ";
-        cin >> ch;
+        cin >> choice;
 
         try {
-            switch (ch) {
+            switch (choice) {
                 case 1: {
-                    char ele;
+                    char element;
                     cout << "Enter an element: ";
-                    cin >> ele;
-                    obj.enqueue(ele);
-                    cout << "Element is inserted in the queue." << endl;
+                    cin >> element;
+                    queue.enqueue(element);
+                    cout << "Element inserted into the queue." << endl;
                     break;
                 }
                 case 2: {
-                    char ele = obj.dequeue();
-                    cout << "Deleted element: " << ele << endl;
+                    char element = queue.dequeue();
+                    cout << "Deleted element: " << element << endl;
                     break;
                 }
                 case 3: {
-                    obj.display();
+                    queue.display();
                     break;
                 }
                 case 4: {
